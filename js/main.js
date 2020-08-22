@@ -1,13 +1,18 @@
 // Declare variables
+let newToDo = "";
 let toDoList = []; // Initializes an empty array
 
-function addNewToDo () {
-    let newToDo = {
+function addNewToDo() {
+    newToDo = {
         task: document.getElementById("newtask").value.trim().toLowerCase(), // Takes input and trims off leading/trailing white spaces and converts to all lowercase
-        date: new Date()
+        date: new Date("2015-03-25t12:00:00Z"), // Citation: https://www.w3schools.com/js/js_date_formats.asp; date formatting
     };
-    toDoList.push(newToDo);
-    console.log(toDoList);
+    if (!toDoList.includes(newToDo)) {
+        toDoList.push(newToDo);
+        newToDo.id = toDoList.indexOf(newToDo);
+        document.getElementById("active-list").innerHTML += `<li><input type="checkbox" id="done-${newToDo.id}" name="done-${newToDo.id}" value="done-${newToDo.id}"><label for="done-${newToDo.id}">${toDoList[newToDo.id].task}<strong> Start: </strong>${toDoList[newToDo.id].date}</label><button id="complete-${newToDo.id}" class="button">Delete</button></li>`;
+        newToDo = "";
+    }
 }
 
 

@@ -17,6 +17,7 @@ August 22, 2020
 - [Google Fonts: 'Russo One', 'Roboto'](https://fonts.google.com/specimen/Russo+One?sidebar.open=true&selection.family=Roboto|Russo+One)
 - [w3schools: Forms](https://www.w3schools.com/html/html_forms.asp)
 - [w3schools: Checkbox](https://www.w3schools.com/tags/att_input_type_checkbox.asp)
+- [w3schools: Date formats](https://www.w3schools.com/js/js_date_formats.asp)
 
 ## Trello Project Board
 https://trello.com/b/A3ef8KNR/javascript-to-do-list
