@@ -5,9 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript To-Do List</title>
 
+    <!--    
+        Normalize.css to reset document formatting for all broswers 
+        @link https://necolas.github.io/normalize.css/8.0.1/normalize.css
+    -->
+    <link rel="stylesheet" href="css/normalize.css">
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Russo+One&display=swap" rel="stylesheet"> 
-
+    
     <link rel="stylesheet" href="css/main.css">
 
     <script src="js/main.js" defer></script>
@@ -16,24 +22,53 @@
     <header>
         <h1>To-Do App</h1>
     </header>
-    <h2>To-Do Form</h2>
-    <form id="to-do-form" action="">
+    <h2>Add a To-Do</h2>
+    <form id="add-to-do-form" action="">
         <label for="new-task">New task:</label>
         <input type="text" id="newtask" name="newtask" value="Enter new to-do item here...">
         <input class="button" type="submit" value="Add To-Do">
     </form>
-    <section>
-        <h2>Active To-Dos</h2>
-        <ul>
-            <li>This is a to-do item <button class="button">Delete</button></li>
-        </ul>
-    </section>
-    <section>
-        <h2>Completed To-Dos</h2>
-        <ul>
-            <li>This is a completed to-do item <button class="button">Delete</button></li>
-        </ul>
-    </section>
+    <div class="flex-container">
+        
+    <!-- Kudos to Aaron Barthal for his guidance re: attaching checkboxes to forms! -->
+        <form id="active-to-do-form">
+            <h2>Active To-Dos</h2>
+            <ul>
+                <li>
+                    <input type="checkbox" id="done-1" name="done-1" value="done1">
+                    <label for="todo-1">This is a to-do item </label>                
+                    <button id="complete-1" class="button">Delete</button>
+                </li>
+                <li>
+                    <input type="checkbox" id="done-2" name="done-2" value="done2">
+                    <label for="todo-2">This is a to-do item </label>                
+                    <button id="complete-2" class="button">Delete</button>
+                </li>
+                <li>
+                    <input type="checkbox" id="done-3" name="done-3" value="done3">
+                    <label for="todo-3">This is a to-do item </label>                
+                    <button id="complete-3" class="button">Delete</button>
+                </li>
+            </ul>
+        </form>
+        
+        
+        
+        <section>
+            <h2>Completed To-Dos</h2>
+            <ul>
+                <li>
+                    This is a completed to-do item <button id="delete-1" class="button">Delete</button>
+                </li>
+                <li>
+                    This is a completed to-do item <button id="delete-2" class="button">Delete</button>
+                </li>
+                <li>
+                    This is a completed to-do item <button id="delete-3" class="button">Delete</button>
+                </li>
+            </ul>
+        </section>
+    </div>
     <footer>&copy; Krisztina Pap, 2020</footer>
 </body>
 </html>

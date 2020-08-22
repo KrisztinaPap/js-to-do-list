@@ -13,6 +13,10 @@ Krisztina Pap
 August 22, 2020
 
 ## Resources
+- [Normalize.css](https://necolas.github.io/normalize.css/8.0.1/normalize.css)
+- [Google Fonts: 'Russo One', 'Roboto'](https://fonts.google.com/specimen/Russo+One?sidebar.open=true&selection.family=Roboto|Russo+One)
+- [w3schools: Forms](https://www.w3schools.com/html/html_forms.asp)
+- [w3schools: Checkbox](https://www.w3schools.com/tags/att_input_type_checkbox.asp)
 
 
 ## Trello Project Board

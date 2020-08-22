@@ -9,10 +9,15 @@
     text-align: center;
 }
 
-h1, 
-h2 {
+h1 {
     font-family: 'Russo One', sans-serif;
     padding-top: 1rem;
+
+} 
+
+h2 {
+    font-family: 'Russo One', sans-serif;
+    padding-top: 2rem;
     padding-bottom: 0.5rem;
 } 
 
@@ -21,11 +26,45 @@ body {
 }
 
 footer {
-    margin-top: 1rem;
+    margin-top: 2rem;
     font-size: 0.6rem;
 }
 
+form input {
+    margin-top: 10px;
+}
+
+hr {
+    margin-top: 24px;
+}
+
 .button {
-    padding: 4px 16px;
+    padding: 0 16px;
     margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#newtask {
+    padding: 3px;
+}
+
+@media screen and ( min-width: 700px ) {
+    .flex-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    ul {
+        list-style-type: none;
+    }
+}
+
+@media screen and ( min-width: 1000px ) {
+    .container {
+        max-width: 1000px;
+        margin: auto;
+    }
 }
