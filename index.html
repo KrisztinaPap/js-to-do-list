@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript To-Do List</title>
 
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Russo+One&display=swap" rel="stylesheet"> 
+
     <link rel="stylesheet" href="css/main.css">
 
     <script src="js/main.js" defer></script>
 </head>
-<body>
+<body class="container">
     <header>
         <h1>To-Do App</h1>
     </header>
@@ -17,14 +20,20 @@
     <form id="to-do-form" action="">
         <label for="new-task">New task:</label>
         <input type="text" id="newtask" name="newtask" value="Enter new to-do item here...">
-        <input type="submit" value="Add To-Do">
+        <input class="button" type="submit" value="Add To-Do">
     </form>
     <section>
-        Active To-Dos
+        <h2>Active To-Dos</h2>
+        <ul>
+            <li>This is a to-do item <button class="button">Delete</button></li>
+        </ul>
     </section>
     <section>
-        Completed To-Dos
+        <h2>Completed To-Dos</h2>
+        <ul>
+            <li>This is a completed to-do item <button class="button">Delete</button></li>
+        </ul>
     </section>
-    <footer>Copyright</footer>
+    <footer>&copy; Krisztina Pap, 2020</footer>
 </body>
 </html>

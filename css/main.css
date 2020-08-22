@@ -1,0 +1,31 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    padding: 10px;
+    text-align: center;
+}
+
+h1, 
+h2 {
+    font-family: 'Russo One', sans-serif;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+} 
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+footer {
+    margin-top: 1rem;
+    font-size: 0.6rem;
+}
+
+.button {
+    padding: 4px 16px;
+    margin-left: 10px;
+}
