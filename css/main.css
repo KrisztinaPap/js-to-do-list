@@ -34,6 +34,11 @@ form input {
     margin-top: 10px;
 }
 
+form label {
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
 hr {
     margin-top: 24px;
 }
