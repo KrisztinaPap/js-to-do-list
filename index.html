@@ -23,10 +23,10 @@
         <h1>To-Do App</h1>
     </header>
     <h2>Add a To-Do</h2>
-    <form id="add-to-do-form" action="">
-        <label for="new-task">New task:</label>
+    <form id="add-to-do-form" action="/action_page.php">
+        <label for="newtask">New task:</label>
         <input type="text" id="newtask" name="newtask" value="Enter new to-do item here...">
-        <input class="button" type="submit" value="Add To-Do">
+        <input class="button" type="button" onclick="addNewToDo(newtask)" value="Submit">
     </form>
     <div class="flex-container">
         
@@ -36,17 +36,17 @@
             <ul>
                 <li>
                     <input type="checkbox" id="done-1" name="done-1" value="done1">
-                    <label for="todo-1">This is a to-do item </label>                
+                    <label for="done-1">This is a to-do item </label>                
                     <button id="complete-1" class="button">Delete</button>
                 </li>
                 <li>
                     <input type="checkbox" id="done-2" name="done-2" value="done2">
-                    <label for="todo-2">This is a to-do item </label>                
+                    <label for="done-2">This is a to-do item </label>                
                     <button id="complete-2" class="button">Delete</button>
                 </li>
                 <li>
                     <input type="checkbox" id="done-3" name="done-3" value="done3">
-                    <label for="todo-3">This is a to-do item </label>                
+                    <label for="done-3">This is a to-do item </label>                
                     <button id="complete-3" class="button">Delete</button>
                 </li>
             </ul>
