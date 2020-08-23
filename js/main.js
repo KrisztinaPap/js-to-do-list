@@ -20,7 +20,7 @@ function listNewToDo() {
     newToDo = "";
 } 
 function listNewCompletedToDo(completedId) {
-    document.getElementById("completed-list").innerHTML += `<li>${completedList[completedId].task}<strong> Start: </strong>${completedList[completedId].startDate}</label><button id="complete-${completedList.completedId}" class="button">Delete</button></li>`;
+    document.getElementById("completed-list").innerHTML += `<li>${completedList[completedId].task}<label for="done-${completedList[completedId]}"><strong> Start: </strong>${completedList[completedId].startDate}<strong> End: </strong>${completedList[completedId].endDate}<button id="complete-${completedList.completedId}" class="button">Delete</button></li>`;
 }
 
 function completeToDo(id) {
