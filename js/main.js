@@ -1,6 +1,7 @@
 // Declare variables
 let newToDo = "";
 let toDoList = []; // Initializes an empty array
+let completedList = []; // Initializes an empty array
 
 function addNewToDo() {
     newToDo = {
@@ -9,11 +10,25 @@ function addNewToDo() {
     };
     if (!toDoList.includes(newToDo)) {
         toDoList.push(newToDo);
-        newToDo.id = toDoList.indexOf(newToDo);
-        document.getElementById("active-list").innerHTML += `<li><input type="checkbox" id="done-${newToDo.id}" name="done-${newToDo.id}" value="done-${newToDo.id}"><label for="done-${newToDo.id}">${toDoList[newToDo.id].task}<strong> Start: </strong>${toDoList[newToDo.id].date}</label><button id="complete-${newToDo.id}" class="button">Delete</button></li>`;
-        newToDo = "";
+        listNewToDo();
+        console.log(toDoList);
     }
 }
+
+function listNewToDo() {
+    newToDo.id = toDoList.indexOf(newToDo);
+    document.getElementById("active-list").innerHTML += `<li><input type="checkbox" id="done-${newToDo.id}" name="done-${newToDo.id}" value="done-${newToDo.id}"><label for="done-${newToDo.id}">${toDoList[newToDo.id].task}<strong> Start: </strong>${toDoList[newToDo.id].date}</label><button id="complete-${newToDo.id}" class="button">Delete</button></li>`;
+    newToDo = "";
+} 
+
+function completeToDo(index) {
+    completedList.push(toDoList[index]);
+    toDoList.splice(index, 1); // Removes array element at index position
+    console.log(completedList);
+}
+
+
+
 
 
 
