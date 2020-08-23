@@ -1,7 +1,9 @@
 // Declare variables
 let newToDo = {};
+let pendingList = []; // Initializes an empty array
 let toDoList = []; // Initializes an empty array
 let completedList = []; // Initializes an empty array
+
 
 function addNewToDo() {
     newToDo = {

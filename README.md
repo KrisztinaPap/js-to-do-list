@@ -4,13 +4,13 @@
 HTML/CSS/JS To-do List
 
 ## Purpose
-The purpose of this assignment is to create a to-do list app using HTML, CSS, and JavaScript.
+The purpose of this assignment is to create a to-do list web app using HTML, CSS, and JavaScript.
 
 ## Author
 Krisztina Pap
 
 ## Last Edit
-August 22, 2020
+August 23, 2020
 
 ## Resources
 - [Normalize.css](https://necolas.github.io/normalize.css/8.0.1/normalize.css)

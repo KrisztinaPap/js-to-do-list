@@ -2,6 +2,9 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    text-align: center;
+    align-content: center;
+    align-items: center;
 }
 
 .container {
@@ -32,6 +35,7 @@ footer {
 
 form input {
     margin-top: 10px;
+    text-align: left;
 }
 
 form label {
@@ -54,7 +58,7 @@ hr {
     padding: 3px;
 }
 
-@media screen and ( min-width: 700px ) {
+@media screen and ( min-width: 1200px ) {
     .flex-container {
         display: flex;
         flex-direction: row;
@@ -64,15 +68,5 @@ hr {
 
     ul {
         list-style-type: none;
-    }
-    form {
-        max-width: 50%;
-    }
-}
-
-@media screen and ( min-width: 1000px ) {
-    .container {
-        max-width: 1000px;
-        margin: auto;
     }
 }
