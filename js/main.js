@@ -30,19 +30,6 @@ function completeToDo(id) {
     console.log("Completed List:", completedList);
 
 }
-/* 
-function updateLists() {
-    for ( let i = 0; i < toDoList.length; i++ )
-    {
-        document.getElementById("active-list").innerHTML +=
-        `<li><input type="checkbox" id="done-${toDoList.id}" name="done-${toDoList.id}" value="done-${toDoList.id}" onclick="completeToDo(${toDoList.id})"><label for="done-${toDoList.id}">${toDoList.task}<strong> Start: </strong>${toDoList.date}</label><button id="complete-${toDoList.id}" class="button">Delete</button></li>`;
-    }
-    for ( let j = 0; j < completedList.length; j++ )
-    {
-        document.getElementById("active-list").innerHTML +=
-        `<li><label for="done-${completedList.id}">${completedList.task}<strong> Start: </strong>${completedList.startDate}<strong> End: </strong>${completedList.endDate}</label><button id="complete-${completedList.id}" class="button">Delete</button></li>`;
-    }
-} */
 
 
 
