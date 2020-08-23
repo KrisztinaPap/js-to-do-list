@@ -19,7 +19,7 @@ function addNewToDo() {
 
 function displayPendingToDo() {
     let index = pendingList.indexOf(newToDo);
-    document.getElementById("pending-list").innerHTML += `<li>${pendingList[index].task}</li>`;
+    document.getElementById("pending-list").innerHTML += `<li>${pendingList[index].task}<button>Start</button><button>Delete</button></li>`;
 }
 
 /* function listNewToDo() {
