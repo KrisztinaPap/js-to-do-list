@@ -1,27 +1,36 @@
 // Declare variables
 let newToDo = {};
 let pendingList = []; // Initializes an empty array
-let toDoList = []; // Initializes an empty array
+let activeList = []; // Initializes an empty array
 let completedList = []; // Initializes an empty array
 
 
 function addNewToDo() {
     newToDo = {
         task: document.getElementById("newtask").value.trim().toLowerCase(), // Takes input and trims off leading/trailing white spaces and converts to all lowercase
-        startDate: new Date("2015-03-25t12:00:00Z"), // Citation: https://www.w3schools.com/js/js_date_formats.asp; date formatting
+        addedDate: new Date("2015-03-25t12:00:00Z"), // Citation: https://www.w3schools.com/js/js_date_formats.asp; date formatting
+        startDate: "",
         endDate: ""
     };
-    toDoList.push(newToDo);
-    listNewToDo();
-    console.log("Todo:", toDoList);
+    pendingList.push(newToDo);
+    console.log("Pending:", pendingList);
+    displayPendingToDo();
 }
 
-function listNewToDo() {
+function displayPendingToDo() {
+    let index = pendingList.indexOf(newToDo);
+    document.getElementById("pending-list").innerHTML += `<li>${pendingList[index].task}</li>`;
+}
+
+/* function listNewToDo() {
     newToDo.id = toDoList.indexOf(newToDo);
     document.getElementById("active-list").innerHTML += `<li id="li-${newToDo.id}"><input type="checkbox" id="done-${newToDo.id}" name="done-${newToDo.id}" value="done-${newToDo.id}" onclick="completeToDo(${newToDo.id})"><label for="done-${newToDo.id}">${toDoList[newToDo.id].task}<strong> Start: </strong>${toDoList[newToDo.id].startDate}</label><button id="complete-${newToDo.id}" class="button">Delete</button></li>`;
     newToDo = "";
-} 
-function listNewCompletedToDo(completedId) {
+}  */
+
+// startDate: new Date("2015-03-25t12:00:00Z"), // Citation: https://www.w3schools.com/js/js_date_formats.asp; date formatting
+
+/* function listNewCompletedToDo(completedId) {
     document.getElementById("completed-list").innerHTML += `<li>${completedList[completedId].task}<label for="done-${completedList[completedId]}"><strong> Start: </strong>${completedList[completedId].startDate}<strong> End: </strong>${completedList[completedId].endDate}<button id="complete-${completedList.completedId}" class="button">Delete</button></li>`;
 }
 
@@ -37,9 +46,5 @@ function completeToDo(id) {
     console.log("Completed List:", completedList);
 
 }
-
-
-
-
-
+ */
 
