@@ -29,21 +29,21 @@ function createNewToDo( userInput ) {
 
 function addPendingToDo( newToDo ) {
     pendingList.push( newToDo );
-    console.log( "Pending:", pendingList );
 }
 
 function showToDo( newToDo ) {
     // show todo in HTML
     const newLI = document.createElement( 'LI' );
     const newCheckBox = document.createElement( 'INPUT' );
-    
+    const newButton = document.createElement( 'BUTTON' );
     newCheckBox.type = "checkbox";
-    
+    newButton.type = "button";
+    newButton.innerHTML = "Delete";
     newLI.textContent = `${newToDo.task}`;
-    newLI.prepend( newCheckBox ) ;
-    //newLI.appendChild( newCheckBox );
+    newLI.prepend( newCheckBox );
+    newLI.append( newButton );
+
     htmlPendingList.appendChild( newLI );
-    
 }
 
 
