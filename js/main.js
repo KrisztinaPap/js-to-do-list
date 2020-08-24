@@ -13,7 +13,12 @@ let deleteButton = document.querySelectorAll( ".deleteButton" );
 newToDoForm.addEventListener( 'submit', ( event, userInput ) => {
     event.preventDefault();
     createNewToDo( userInput );
-})
+});
+
+newToDoForm.addEventListener( 'submit', ( event, userInput ) => {
+    event.preventDefault();
+    createNewToDo( userInput );
+});
 
 function createNewToDo( userInput ) {
     newToDo = {
@@ -36,9 +41,12 @@ function showToDo( newToDo ) {
     const newLI = document.createElement( 'LI' );
     const newCheckBox = document.createElement( 'INPUT' );
     const newButton = document.createElement( 'BUTTON' );
+    
     newCheckBox.type = "checkbox";
     newButton.type = "button";
-    newButton.innerHTML = "Delete";
+    newButton.innerHTML = "Start";
+    newButton.classList.add( "activateButton" );
+    
     newLI.textContent = `${newToDo.task}`;
     newLI.prepend( newCheckBox );
     newLI.append( newButton );
