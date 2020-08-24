@@ -23,28 +23,28 @@
         <h1>To-Do App</h1>
     </header>
     <h2>Add New To-Do</h2>
-    <form id="add-to-do-form" action="/action_page.php">
-        <label for="newtask"></label>
-        <input type="text" id="newtask" name="newtask" value="New ToDo">
+    <form id="add-to-do-form" action="#">
+        <label for="new-task">New Todo</label>
+        <input type="text" id="new-task" name="newtask" value="">
         <input type="button" onclick="createNewToDo(newtask)" value="Add ToDo">
     </form>
-    <div class="flex-container">
-        
+
+    <div class="flex-container"> 
     <!-- Kudos to Aaron Barthal for his guidance re: attaching checkboxes to forms! -->
-        <form id="pending-to-dos">
+        <section>
             <h2>Pending To-Dos</h2>
             <ul id="pending-list"></ul>
-        </form>
+        </section>
 
-        <form id="active-to-dos">
+        <section>
             <h2>Active To-Dos</h2>
             <ul id="active-list"></ul>
-        </form>
+        </section>
     
-        <form id="completed-to-dos">
+        <section>
             <h2>Completed To-Dos</h2>
             <ul id="completed-list"></ul>
-        </form>
+        </section>
     </div>
     <footer>&copy; Krisztina Pap, 2020</footer>
 </body>
