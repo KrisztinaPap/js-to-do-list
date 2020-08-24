@@ -5,7 +5,7 @@ let pendingList = []; // Initializes an empty array
 let activeList = []; // Initializes an empty array
 let completedList = []; // Initializes an empty array
 let userInput = document.getElementById( "new-task" ).textContent;
-let htmlPendingList = document.getElementById( "pending-list" ).innerHTML;
+let htmlPendingList = document.getElementById( "pending-list" );
 let htmlActiveList = document.getElementById( "active-list" ).innerHTML;
 let htmlCompletedList = document.getElementById( "completed-list" ).innerHTML;
 let deleteButton = document.querySelectorAll( ".deleteButton" );
@@ -24,13 +24,22 @@ function createNewToDo( userInput ) {
         endDate: ""
     };
     addPendingToDo( newToDo );
-    reloadPendingList();
+    showToDo( newToDo );
 }
 
 function addPendingToDo( newToDo ) {
     pendingList.push( newToDo );
     console.log( "Pending:", pendingList );
 }
+
+function showToDo( newToDo ) {
+    // show todo in HTML
+    const newLI = document.createElement( 'LI' );
+    console.log( newLI );
+    newLI.textContent = `Hello ${newToDo.task}`;
+    htmlPendingList.appendChild( newLI );
+}
+
 
 
 
