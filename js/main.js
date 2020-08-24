@@ -16,7 +16,17 @@ newToDoForm.addEventListener( 'submit', ( event, userInput ) => {
 
 htmlPendingList.addEventListener( 'click', ( event ) => {
     event.preventDefault();
-    console.log( "You tried to activate a task!");
+    let clickedId = event.target.id;
+    console.log("clickedId:", clickedId);
+    console.log("pending:", pendingList);
+    let clickedItem = pendingList.find( item => {
+        return item.id === Number(clickedId)
+    });
+    console.log("clickedItem:", clickedItem);
+    //pendingList[clickedId].startDate = new Date( "2015-03-25t12:00:00Z" ); // Citation: https://www.w3schools.com/js/js_date_formats.asp; date formatting
+    activeList.push( pendingList[clickedId] );
+    
+    console.log("active:", activeList); 
 });
 
 function createNewToDo( userInput ) {
@@ -43,10 +53,12 @@ function showToDo( newToDo ) {
     
 //    newCheckBox.type = "checkbox";
     newButton.type = "button";
+    newButton.id = newToDo.id;
     newButton.innerHTML = "Start";
     newButton.classList.add( "activateButton" );
     
     newLI.textContent = `${newToDo.task}`;
+    newLI.id = `${newToDo.id}`;
 //    newLI.prepend( newCheckBox );
     newLI.append( newButton );
 
