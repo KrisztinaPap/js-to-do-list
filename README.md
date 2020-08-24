@@ -20,6 +20,7 @@ August 23, 2020
 - [w3schools: Date formats](https://www.w3schools.com/js/js_date_formats.asp)
 - [Code Explained](https://youtu.be/b8sUhU_eq3g)
 - [MDN Web Docs: HTMLFormElement: Submit Event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/submit_event)
+- [MDN Web Docs: Array.prototype.find()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find)
 
 ## Trello Project Board
 https://trello.com/b/A3ef8KNR/javascript-to-do-list

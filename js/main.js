@@ -17,15 +17,21 @@ newToDoForm.addEventListener( 'submit', ( event, userInput ) => {
 htmlPendingList.addEventListener( 'click', ( event ) => {
     event.preventDefault();
     let clickedId = event.target.id;
-    console.log("clickedId:", clickedId);
-    console.log("pending:", pendingList);
+    //  Citation
+    //      https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
+    //      The below code block finds the item on pendinglist that has the same id as our clicked button.
     let clickedItem = pendingList.find( item => {
         return item.id === Number(clickedId)
     });
-    console.log("clickedItem:", clickedItem);
+    //let clickedItemIndex = pendingList.indexOf( clickedItem );
     clickedItem.startDate = new Date( "2015-03-25t12:00:00Z" ); // Citation: https://www.w3schools.com/js/js_date_formats.asp; date formatting
     activeList.push( clickedItem );
-    
+
+    let noLongerActive = document.querySelector( `.pending-task-${clickedId}` );
+    console.log(noLongerActive);
+    //noLongerActive.remove();
+    //pendingList.splice(id, 1); // Removes array element at index position
+    console.log("pending:", pendingList); 
     console.log("active:", activeList); 
 });
 
@@ -58,32 +64,10 @@ function showToDo( newToDo ) {
     newButton.classList.add( "activateButton" );
     
     newLI.textContent = `${newToDo.task}`;
+    newLI.classList.add( `pending-task-${newToDo.id}` );
     newLI.id = `${newToDo.id}`;
 //    newLI.prepend( newCheckBox );
     newLI.append( newButton );
 
     htmlPendingList.appendChild( newLI );
-}
-
-
-
-
-/* function deleteButtonClick(id) {
-    deleteButton.addEventListener( ' click ', ( id ) => {
-        console.log( `A Delete button was pressed! ${id}` );
-    });
-} */
-
-/* function activateToDo(index) {
-    pendingList[index].startDate = new Date("2015-03-25t12:00:00Z"); // Citation: https://www.w3schools.com/js/js_date_formats.asp; date formatting
-    activeList.push(pendingList[index]);
-    console.log("Pending:", pendingList);
-    console.log("Active", activeList);
-} */
-
-function reloadPendingList() {
-    htmlPendingList = "";
-    for ( let i = 0; i < pendingList.length; i++ ) {
-        htmlPendingList += pendingList[i].task;
-    }
 }
