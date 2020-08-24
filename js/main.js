@@ -6,18 +6,17 @@ let activeList = []; // Initializes an empty array
 let completedList = []; // Initializes an empty array
 let userInput = document.getElementById( "new-task" ).textContent;
 let htmlPendingList = document.getElementById( "pending-list" );
-let htmlActiveList = document.getElementById( "active-list" ).innerHTML;
-let htmlCompletedList = document.getElementById( "completed-list" ).innerHTML;
-let deleteButton = document.querySelectorAll( ".deleteButton" );
+let htmlActiveList = document.getElementById( "active-list" );
+let htmlCompletedList = document.getElementById( "completed-list" );
 
 newToDoForm.addEventListener( 'submit', ( event, userInput ) => {
     event.preventDefault();
     createNewToDo( userInput );
 });
 
-newToDoForm.addEventListener( 'submit', ( event, userInput ) => {
+htmlPendingList.addEventListener( 'click', ( event ) => {
     event.preventDefault();
-    createNewToDo( userInput );
+    console.log( "You tried to activate a task!");
 });
 
 function createNewToDo( userInput ) {
@@ -39,16 +38,16 @@ function addPendingToDo( newToDo ) {
 function showToDo( newToDo ) {
     // show todo in HTML
     const newLI = document.createElement( 'LI' );
-    const newCheckBox = document.createElement( 'INPUT' );
+//    const newCheckBox = document.createElement( 'INPUT' );
     const newButton = document.createElement( 'BUTTON' );
     
-    newCheckBox.type = "checkbox";
+//    newCheckBox.type = "checkbox";
     newButton.type = "button";
     newButton.innerHTML = "Start";
     newButton.classList.add( "activateButton" );
     
     newLI.textContent = `${newToDo.task}`;
-    newLI.prepend( newCheckBox );
+//    newLI.prepend( newCheckBox );
     newLI.append( newButton );
 
     htmlPendingList.appendChild( newLI );
