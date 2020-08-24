@@ -28,11 +28,10 @@ htmlPendingList.addEventListener( 'click', ( event ) => {
     activeList.push( clickedItem );
 
     let noLongerActive = document.querySelector( `.pending-task-${clickedId}` );
-    console.log(noLongerActive);
     noLongerActive.remove();  // Removed clicked item from pending HTML
     pendingList.splice(clickedItemIndex, 1); // Removes array element at index position
-    console.log("pending:", pendingList); 
-    console.log("active:", activeList); 
+ 
+    showActiveToDo ( clickedItem );
 });
 
 function createNewToDo( userInput ) {
@@ -44,14 +43,14 @@ function createNewToDo( userInput ) {
         endDate: ""
     };
     addPendingToDo( newToDo );
-    showToDo( newToDo );
+    showPendingToDo( newToDo );
 }
 
 function addPendingToDo( newToDo ) {
     pendingList.push( newToDo );
 }
 
-function showToDo( newToDo ) {
+function showPendingToDo( newToDo ) {
     // show todo in HTML
     const newLI = document.createElement( 'LI' );
 //    const newCheckBox = document.createElement( 'INPUT' );
@@ -70,4 +69,24 @@ function showToDo( newToDo ) {
     newLI.append( newButton );
 
     htmlPendingList.appendChild( newLI );
+}
+
+function showActiveToDo( clickedItem ) {
+    const newLI = document.createElement( 'LI' );
+    const newCheckBox = document.createElement( 'INPUT' );
+    const newButton = document.createElement( 'BUTTON' );
+    
+    newCheckBox.type = "checkbox";
+    newButton.type = "button";
+    newButton.id = clickedItem.id;
+    newButton.innerHTML = "Delete";
+    newButton.classList.add( "deleteButton" );
+    
+    newLI.textContent = `${clickedItem.task}`;
+    newLI.classList.add( `active-task-${clickedItem.id}` );
+    newLI.id = `${clickedItem.id}`;
+    newLI.prepend( newCheckBox );
+    newLI.append( newButton );
+
+    htmlActiveList.appendChild( newLI );
 }
