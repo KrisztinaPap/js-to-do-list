@@ -10,6 +10,11 @@ let htmlActiveList = document.getElementById( "active-list" ).innerHTML;
 let htmlCompletedList = document.getElementById( "completed-list" ).innerHTML;
 let deleteButton = document.querySelectorAll( ".deleteButton" );
 
+newToDoForm.addEventListener( 'submit', ( event ) => {
+    event.preventDefault();
+})
+
+
 /* function deleteButtonClick(id) {
     deleteButton.addEventListener( ' click ', ( id ) => {
         console.log( `A Delete button was pressed! ${id}` );
