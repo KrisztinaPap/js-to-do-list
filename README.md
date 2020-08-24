@@ -18,6 +18,7 @@ August 23, 2020
 - [w3schools: Forms](https://www.w3schools.com/html/html_forms.asp)
 - [w3schools: Checkbox](https://www.w3schools.com/tags/att_input_type_checkbox.asp)
 - [w3schools: Date formats](https://www.w3schools.com/js/js_date_formats.asp)
+- [Code Explained](https://youtu.be/b8sUhU_eq3g)
 
 ## Trello Project Board
 https://trello.com/b/A3ef8KNR/javascript-to-do-list

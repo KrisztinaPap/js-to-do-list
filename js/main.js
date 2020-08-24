@@ -3,28 +3,49 @@ let newToDo = {};
 let pendingList = []; // Initializes an empty array
 let activeList = []; // Initializes an empty array
 let completedList = []; // Initializes an empty array
+let userInput = document.getElementById("newtask").value;
+let htmlPendingList = document.getElementById("pending-list").innerHTML;
+let htmlActiveList = document.getElementById("active-list").innerHTML;
+let htmlCompletedList = document.getElementById("completed-list").innerHTML;
 
 
 function addNewToDo() {
     newToDo = {
-        task: document.getElementById("newtask").value.trim().toLowerCase(), // Takes input and trims off leading/trailing white spaces and converts to all lowercase
+        id: Math.random(),
+        task: userInput.trim(), // Takes input and trims off leading/trailing white spaces
         addedDate: new Date("2015-03-25t12:00:00Z"), // Citation: https://www.w3schools.com/js/js_date_formats.asp; date formatting
         startDate: "",
         endDate: ""
     };
     pendingList.push(newToDo);
     console.log("Pending:", pendingList);
-    displayPendingToDo();
+    displayPendingToDo(newToDo.id);
 }
 
-function displayPendingToDo() {
+function displayPendingToDo(id) {
     let index = pendingList.indexOf(newToDo);
-    document.getElementById("pending-list").innerHTML += 
-        `<li>
+    let listItem = 
+        `<li id="li-${id}">
             ${pendingList[index].task}
-            <button id="start-${index}">Start</button>
-            <button id="delete-${index}">Delete</button>
+            <button id="start-${id} onclick="activateToDo(${id}, e), e.preventDefault()">Start</button>
+            <button id="delete-${id}">Delete</button>
         </li>`;
+    let position = "beforeend";
+    htmlPendingList.insertAdjacentHTML( position, listItem);
+}
+
+//function deletePendingToDo(index) {
+//    console.log(`just deleted #li-${index}`);
+//    let noLongerActive = document.getElementById(`#li-${index}`);
+//    noLongerActive.remove();
+//    pendingList.splice(id, 1); // Removes array element at index position
+//}
+
+function activateToDo(index) {
+    activeList.push(pendingList[index]);
+    
+    console.log("Pending:", pendingList);
+    console.log("Active", activeList);
 }
 
 /* function listNewToDo() {
