@@ -23,14 +23,14 @@ htmlPendingList.addEventListener( 'click', ( event ) => {
     let clickedItem = pendingList.find( item => {
         return item.id === Number(clickedId)
     });
-    //let clickedItemIndex = pendingList.indexOf( clickedItem );
+    let clickedItemIndex = pendingList.indexOf( clickedItem );
     clickedItem.startDate = new Date( "2015-03-25t12:00:00Z" ); // Citation: https://www.w3schools.com/js/js_date_formats.asp; date formatting
     activeList.push( clickedItem );
 
     let noLongerActive = document.querySelector( `.pending-task-${clickedId}` );
     console.log(noLongerActive);
-    //noLongerActive.remove();
-    //pendingList.splice(id, 1); // Removes array element at index position
+    noLongerActive.remove();  // Removed clicked item from pending HTML
+    pendingList.splice(clickedItemIndex, 1); // Removes array element at index position
     console.log("pending:", pendingList); 
     console.log("active:", activeList); 
 });
