@@ -17,7 +17,7 @@ let deleteButton = document.querySelectorAll( '.deleteButton ').innerHTML;
 
 function createNewToDo( userInput ) {
     newToDo = {
-        id: Math.random(),
+        id: Math.floor((Math.random() * 1000000) + 1),
         task: userInput.value, // Takes input and trims off leading/trailing white spaces
         addedDate: new Date( "2015-03-25t12:00:00Z" ), // Citation: https://www.w3schools.com/js/js_date_formats.asp; date formatting
         startDate: "",
