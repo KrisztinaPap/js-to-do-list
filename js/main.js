@@ -1,13 +1,14 @@
 // Declare variables
 let newToDo = {};
+const newToDoForm = document.getElementById( "add-to-do-form" );
 let pendingList = []; // Initializes an empty array
 let activeList = []; // Initializes an empty array
 let completedList = []; // Initializes an empty array
 let userInput = document.getElementById( "new-task" );
-let htmlPendingList = document.getElementById( 'pending-list' ).innerHTML;
-let htmlActiveList = document.getElementById( 'active-list' ).innerHTML;
-let htmlCompletedList = document.getElementById( 'completed-list' ).innerHTML;
-let deleteButton = document.querySelectorAll( '.deleteButton ').innerHTML;
+let htmlPendingList = document.getElementById( "pending-list" ).innerHTML;
+let htmlActiveList = document.getElementById( "active-list" ).innerHTML;
+let htmlCompletedList = document.getElementById( "completed-list" ).innerHTML;
+let deleteButton = document.querySelectorAll( ".deleteButton" );
 
 /* function deleteButtonClick(id) {
     deleteButton.addEventListener( ' click ', ( id ) => {
