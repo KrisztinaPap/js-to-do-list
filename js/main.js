@@ -35,9 +35,15 @@ function addPendingToDo( newToDo ) {
 function showToDo( newToDo ) {
     // show todo in HTML
     const newLI = document.createElement( 'LI' );
-    console.log( newLI );
-    newLI.textContent = `Hello ${newToDo.task}`;
+    const newCheckBox = document.createElement( 'INPUT' );
+    
+    newCheckBox.type = "checkbox";
+    
+    newLI.textContent = `${newToDo.task}`;
+    newLI.prepend( newCheckBox ) ;
+    //newLI.appendChild( newCheckBox );
     htmlPendingList.appendChild( newLI );
+    
 }
 
 
