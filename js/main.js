@@ -23,8 +23,8 @@ htmlPendingList.addEventListener( 'click', ( event ) => {
         return item.id === Number(clickedId)
     });
     console.log("clickedItem:", clickedItem);
-    //pendingList[clickedId].startDate = new Date( "2015-03-25t12:00:00Z" ); // Citation: https://www.w3schools.com/js/js_date_formats.asp; date formatting
-    activeList.push( pendingList[clickedId] );
+    clickedItem.startDate = new Date( "2015-03-25t12:00:00Z" ); // Citation: https://www.w3schools.com/js/js_date_formats.asp; date formatting
+    activeList.push( clickedItem );
     
     console.log("active:", activeList); 
 });
