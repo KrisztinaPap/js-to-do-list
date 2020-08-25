@@ -34,6 +34,25 @@ htmlPendingList.addEventListener( 'click', ( event ) => {
     showActiveToDo ( clickedItem );
 });
 
+htmlActiveList.addEventListener( 'change', ( event ) => {
+    event.preventDefault();
+    console.log(event);
+    let checkedItem = Number(event.path[1].id);
+    console.log("checkeditem", checkedItem);
+    let checkedItemIndex = activeList.findIndex( item => item.id === checkedItem );
+    console.log( checkedItemIndex);
+    checkedItem.endDate = new Date( "2015-03-25t12:00:00Z" ); // Citation: https://www.w3schools.com/js/js_date_formats.asp; date formatting
+    //completedList.push( checkedItem );
+
+    //let noLongerActive = document.querySelector( `.active-task-${checkedId}` );
+    //noLongerActive.remove();  // Removed clicked item from pending HTML
+    //activeList.splice(checkedItemIndex, 1); // Removes array element at index position
+    console.log("pending", pendingList);
+    console.log("active", activeList);
+    console.log("completed", completedList);
+    //showCompletedToDo ( checkedItem ); 
+});
+
 function createNewToDo( userInput ) {
     newToDo = {
         id: Math.floor((Math.random() * 1000000) + 1),
@@ -53,10 +72,10 @@ function addPendingToDo( newToDo ) {
 function showPendingToDo( newToDo ) {
     // show todo in HTML
     const newLI = document.createElement( 'LI' );
-//    const newCheckBox = document.createElement( 'INPUT' );
+
     const newButton = document.createElement( 'BUTTON' );
     
-//    newCheckBox.type = "checkbox";
+
     newButton.type = "button";
     newButton.id = newToDo.id;
     newButton.innerHTML = "Start";
@@ -65,7 +84,7 @@ function showPendingToDo( newToDo ) {
     newLI.textContent = `${newToDo.task}`;
     newLI.classList.add( `pending-task-${newToDo.id}` );
     newLI.id = `${newToDo.id}`;
-//    newLI.prepend( newCheckBox );
+
     newLI.append( newButton );
 
     htmlPendingList.appendChild( newLI );
@@ -89,4 +108,21 @@ function showActiveToDo( clickedItem ) {
     newLI.append( newButton );
 
     htmlActiveList.appendChild( newLI );
+}
+
+function showCompletedToDo( checkedItem ) {
+    const newLI = document.createElement( 'LI' );
+    const newButton = document.createElement( 'BUTTON' );
+    
+    newButton.type = "button";
+    newButton.id = checkedItem.id;
+    newButton.innerHTML = "Delete";
+    newButton.classList.add( "deleteButton" );
+    
+    newLI.textContent = `${checkedItem.task}`;
+    newLI.classList.add( `completed-task-${checkedItem.id}` );
+    newLI.id = `${checkedItem.id}`;
+    newLI.append( newButton );
+
+    htmlCompletedList.appendChild( newLI );
 }
