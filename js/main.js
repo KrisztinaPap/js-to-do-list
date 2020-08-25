@@ -40,7 +40,6 @@ htmlActiveList.addEventListener( 'change', ( event ) => {
     let checkedItem = Number(event.path[1].id);
     console.log("checkeditem", checkedItem);
     let checkedItemIndex = activeList.findIndex( item => item.id === checkedItem );
-    checkedItem.endDate = new Date( "2015-03-25t12:00:00Z" ); // Citation: https://www.w3schools.com/js/js_date_formats.asp; date formatting
     completedList.push( activeList[checkedItemIndex] );
 
     let noLongerActive = document.querySelector( `.active-task-${checkedItem}` );
@@ -102,7 +101,7 @@ function showPendingToDo( newToDo ) {
     newButton.innerHTML = "Start";
     newButton.classList.add( "activateButton" );
     
-    newLI.textContent = `${newToDo.task}`;
+    newLI.textContent = `${newToDo.task}; Added: ${newToDo.addedDate}`;
     newLI.classList.add( `pending-task-${newToDo.id}` );
     newLI.id = `${newToDo.id}`;
 
@@ -123,7 +122,7 @@ function showActiveToDo( clickedItem ) {
     newButton.innerHTML = "Delete";
     newButton.classList.add( "deleteButton" );
     
-    newLI.textContent = `${clickedItem.task}`;
+    newLI.textContent = `${clickedItem.task}; Start: ${clickedItem.startDate}`;
     newLI.classList.add( `active-task-${clickedItem.id}` );
     newLI.id = `${clickedItem.id}`;
     newLI.prepend( newCheckBox );
@@ -135,6 +134,7 @@ function showActiveToDo( clickedItem ) {
 function showCompletedToDo( checkedItem ) {
     let completedItemIndex = completedList.findIndex( item => item.id === checkedItem );
     let completedItem = completedList[completedItemIndex];
+    completedItem.endDate = new Date( "2015-03-25t12:00:00Z" ); // Citation: https://www.w3schools.com/js/js_date_formats.asp; date formatting
     const newLI = document.createElement( 'LI' );
     const newButton = document.createElement( 'BUTTON' );
     const reverseCheckBox = document.createElement( 'INPUT' );
@@ -145,7 +145,7 @@ function showCompletedToDo( checkedItem ) {
     newButton.innerHTML = "Delete";
     newButton.classList.add( "deleteButton" );
     
-    newLI.textContent = `${completedItem.task}`;
+    newLI.textContent = `${completedItem.task}; Completed: ${completedItem.endDate}`;
     newLI.classList.add( `completed-task-${completedItem.id}` );
     newLI.id = `${completedItem.id}`;
     newLI.append( newButton );
