@@ -139,11 +139,12 @@ function showCompletedToDo( checkedItem ) {
     completedItem.endDate = new Date( "2015-03-25t12:00:00Z" ); // Citation: https://www.w3schools.com/js/js_date_formats.asp; date formatting
     const newLI = document.createElement( 'LI' );
     const newButton = document.createElement( 'BUTTON' );
-    const reverseCheckBox = document.createElement( 'INPUT' );
+    const reverseCheckBox = document.createElement( 'INPUT');
     
     reverseCheckBox.type = "checkbox";
+    reverseCheckBox.checked = true;
     newButton.type = "button";
-    newButton.classList.add("button", "green");
+    newButton.classList.add("button", "red");
     newButton.id = completedItem.id;
     newButton.innerHTML = "Delete";
     newButton.classList.add( "deleteButton" );
