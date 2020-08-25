@@ -3,8 +3,16 @@
     margin: 0;
     padding: 0;
     text-align: center;
-    align-content: center;
     align-items: center;
+    font-size: 22px;
+}
+
+section {
+    background-color: gray;
+    padding: 2rem;
+    margin: 2rem;
+    border: 2px black solid;
+    border-radius: 15px;
 }
 
 .container {
@@ -20,8 +28,9 @@ h1 {
 
 h2 {
     font-family: 'Russo One', sans-serif;
-    padding-top: 2rem;
-    padding-bottom: 0.5rem;
+    font-size: 1.6rem;
+    padding-top: 1.6rem;
+    padding-bottom: 2rem;
 } 
 
 body {
@@ -74,15 +83,16 @@ input {
     padding: 3px;
 }
 
+ul {
+    list-style-type: none;
+}
+
 @media screen and ( min-width: 1200px ) {
     .flex-container {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-around;
-    }
-
-    ul {
-        list-style-type: none;
+        align-items: baseline;
     }
 }

@@ -126,7 +126,8 @@ function showPendingToDo( newToDo ) {
     newButton.innerHTML = "Start";
     newButton.classList.add( "activateButton" );
     
-    newLI.textContent = `${newToDo.task}; Added: ${newToDo.addedDate}`;
+    newLI.textContent = `${newToDo.task},
+                         Added: ${newToDo.addedDate}`;
     newLI.classList.add( `pending-task-${newToDo.id}` );
     newLI.id = `${newToDo.id}`;
 
@@ -148,7 +149,7 @@ function showActiveToDo( clickedItem ) {
     newButton.classList.add( "deleteButton" );
     newButton.addEventListener( 'click', () => {deleteListItem(newButton.id)});
     
-    newLI.textContent = `${clickedItem.task}; Started: ${clickedItem.startDate}`;
+    newLI.textContent = `${clickedItem.task}, Started: ${clickedItem.startDate}`;
     newLI.classList.add( `active-task-${clickedItem.id}` );
     newLI.id = `${clickedItem.id}`;
     newLI.prepend( newCheckBox );
@@ -184,7 +185,7 @@ function showCompletedToDo( checkedItem ) {
     newButton.classList.add( "deleteButton" );
     newButton.addEventListener( 'click', () => {deleteListItem(newButton.id)});
     
-    newLI.textContent = `${completedItem.task}; Completed:${completedItem.endDate}`;
+    newLI.textContent = `${completedItem.task}, Completed:${completedItem.endDate}`;
     newLI.classList.add( `completed-task-${completedItem.id}` );
     newLI.id = `${completedItem.id}`;
     newLI.append( newButton );
