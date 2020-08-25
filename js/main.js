@@ -53,6 +53,27 @@ htmlActiveList.addEventListener( 'change', ( event ) => {
     showCompletedToDo ( checkedItem, checkedItemIndex ); 
 });
 
+htmlCompletedList.addEventListener( 'change', ( event ) => {
+    event.preventDefault();
+    console.log(event);
+    let reverseCheckedItem = Number(event.path[1].id);
+    console.log("reversecheckeditem", reverseCheckedItem);
+    let reverseCheckedItemIndex = completedList.findIndex( item => item.id === reverseCheckedItem );
+    reverseCheckedItem.startDate = new Date( "2015-03-25t12:00:00Z" ); // Citation: https://www.w3schools.com/js/js_date_formats.asp; date formatting
+    activeList.push( completedList[reverseCheckedItemIndex] );
+
+    let noLongerActive = document.querySelector( `.completed-task-${reverseCheckedItem}` );
+    console.log(noLongerActive);
+    noLongerActive.remove();  // Removed clicked item from pending HTML
+    completedList.splice(reverseCheckedItemIndex, 1); // Removes array element at index position
+    console.log("pending", pendingList);
+    console.log("active", activeList);
+    console.log("completed", completedList);
+    let newIndex = activeList.findIndex( item => item.id === reverseCheckedItem);
+    clickedItem = activeList[newIndex];
+    showActiveToDo ( clickedItem ); 
+});
+
 function createNewToDo( userInput ) {
     newToDo = {
         id: Math.floor((Math.random() * 1000000) + 1),
@@ -91,6 +112,7 @@ function showPendingToDo( newToDo ) {
 }
 
 function showActiveToDo( clickedItem ) {
+    console.log("clicked ITEM:", clickedItem);
     const newLI = document.createElement( 'LI' );
     const newCheckBox = document.createElement( 'INPUT' );
     const newButton = document.createElement( 'BUTTON' );
@@ -112,12 +134,12 @@ function showActiveToDo( clickedItem ) {
 
 function showCompletedToDo( checkedItem ) {
     let completedItemIndex = completedList.findIndex( item => item.id === checkedItem );
-    console.log(completedItemIndex);
     let completedItem = completedList[completedItemIndex];
-    console.log(completedItem);
     const newLI = document.createElement( 'LI' );
     const newButton = document.createElement( 'BUTTON' );
+    const reverseCheckBox = document.createElement( 'INPUT' );
     
+    reverseCheckBox.type = "checkbox";
     newButton.type = "button";
     newButton.id = completedItem.id;
     newButton.innerHTML = "Delete";
@@ -127,6 +149,7 @@ function showCompletedToDo( checkedItem ) {
     newLI.classList.add( `completed-task-${completedItem.id}` );
     newLI.id = `${completedItem.id}`;
     newLI.append( newButton );
+    newLI.prepend( reverseCheckBox );
 
     htmlCompletedList.appendChild( newLI );
 }
