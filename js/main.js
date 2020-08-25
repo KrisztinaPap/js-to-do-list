@@ -40,8 +40,16 @@ htmlPendingList.addEventListener( 'click', ( event ) => {
     let clickedItem = pendingList.find( item => {
         return item.id === Number(clickedId)
     });
+    // Citation
+    //      https://tecadmin.net/get-current-date-time-javascript/
+    // The below 4 lines of code get the current date and time, format them, then concatenate them into a variable called dateTime 
+    let today = new Date();
+    let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    let dateTime = date+' '+time;
+
     let clickedItemIndex = pendingList.indexOf( clickedItem );
-    clickedItem.startDate = new Date( "2015-03-25t12:00:00Z" ); // Citation: https://www.w3schools.com/js/js_date_formats.asp; date formatting
+    clickedItem.startDate = dateTime; // Citation: https://www.w3schools.com/js/js_date_formats.asp; date formatting
     activeList.push( clickedItem );
     let noLongerActive = document.querySelector( `.pending-task-${clickedId}` );
     noLongerActive.remove();  // Removed clicked item from pending HTML
@@ -65,7 +73,16 @@ htmlCompletedList.addEventListener( 'change', ( event ) => {
     event.preventDefault();
     let reverseCheckedItem = Number(event.path[1].id);
     let reverseCheckedItemIndex = completedList.findIndex( item => item.id === reverseCheckedItem );
-    reverseCheckedItem.startDate = new Date( "2015-03-25t12:00:00Z" ); // Citation: https://www.w3schools.com/js/js_date_formats.asp; date formatting
+
+    // Citation
+    //      https://tecadmin.net/get-current-date-time-javascript/
+    // The below 4 lines of code get the current date and time, format them, then concatenate them into a variable called dateTime 
+    let today = new Date();
+    let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    let dateTime = date+' '+time;
+
+    reverseCheckedItem.startDate = dateTime; // Citation: https://www.w3schools.com/js/js_date_formats.asp; date formatting
     activeList.push( completedList[reverseCheckedItemIndex] );
     let noLongerActive = document.querySelector( `.completed-task-${reverseCheckedItem}` );
     noLongerActive.remove();  // Removed clicked item from pending HTML
@@ -76,10 +93,17 @@ htmlCompletedList.addEventListener( 'change', ( event ) => {
 });
 
 function createNewToDo( userInput ) {
+    // Citation
+    //      https://tecadmin.net/get-current-date-time-javascript/
+    // The below 4 lines of code get the current date and time, format them, then concatenate them into a variable called dateTime 
+    let today = new Date();
+    let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    let dateTime = date+' '+time;
     newToDo = {
         id: Math.floor((Math.random() * 1000000) + 1),
         task: userInput.value, // Takes input and trims off leading/trailing white spaces
-        addedDate: new Date( "2015-03-25t12:00:00Z" ), // Citation: https://www.w3schools.com/js/js_date_formats.asp; date formatting
+        addedDate: dateTime, // Citation: https://www.w3schools.com/js/js_date_formats.asp; date formatting
         startDate: "",
         endDate: ""
     };
@@ -139,7 +163,16 @@ function showActiveToDo( clickedItem ) {
 function showCompletedToDo( checkedItem ) {
     let completedItemIndex = completedList.findIndex( item => item.id === checkedItem );
     let completedItem = completedList[completedItemIndex];
-    completedItem.endDate = new Date( "2015-03-25t12:00:00Z" ); // Citation: https://www.w3schools.com/js/js_date_formats.asp; date formatting
+
+    // Citation
+    //      https://tecadmin.net/get-current-date-time-javascript/
+    // The below 4 lines of code get the current date and time, format them, then concatenate them into a variable called dateTime 
+    let today = new Date();
+    let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    let dateTime = date+' '+time;
+
+    completedItem.endDate = dateTime; // Citation: https://www.w3schools.com/js/js_date_formats.asp; date formatting
     const newLI = document.createElement( 'LI' );
     const newButton = document.createElement( 'BUTTON' );
     const reverseCheckBox = document.createElement( 'INPUT');
