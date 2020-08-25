@@ -8,11 +8,28 @@ let userInput = document.getElementById( "new-task" ).textContent;
 let htmlPendingList = document.getElementById( "pending-list" );
 let htmlActiveList = document.getElementById( "active-list" );
 let htmlCompletedList = document.getElementById( "completed-list" );
+let listArea = document.getElementById( "list-area" );
+let deleteButtons = document.querySelectorAll( '.deleteButton' );
 
 newToDoForm.addEventListener( 'submit', ( event, userInput ) => {
     event.preventDefault();
     createNewToDo( userInput );
 });
+
+function deleteListItem() {
+        event.preventDefault();
+        let toDeleteId = event.target.id;
+        let toDeleteIndex = activeList.findIndex( item => item.id === toDeleteId ) || completedList.findIndex( item => item.id === toDeleteId );
+        let toDelete = document.getElementById( `${toDeleteId}` );
+        toDelete.remove();  // Removed clicked item from pending HTML
+        if(activeList.includes(toDelete)){
+            activeList.splice(toDeleteIndex, 1); // Removes array element at index position
+        }
+        if(completedList.includes(toDelete)){
+            completedList.splice(toDeleteIndex, 1); // Removes array element at index position
+        }
+         
+};
 
 htmlPendingList.addEventListener( 'click', ( event ) => {
     event.preventDefault();
@@ -26,7 +43,6 @@ htmlPendingList.addEventListener( 'click', ( event ) => {
     let clickedItemIndex = pendingList.indexOf( clickedItem );
     clickedItem.startDate = new Date( "2015-03-25t12:00:00Z" ); // Citation: https://www.w3schools.com/js/js_date_formats.asp; date formatting
     activeList.push( clickedItem );
-
     let noLongerActive = document.querySelector( `.pending-task-${clickedId}` );
     noLongerActive.remove();  // Removed clicked item from pending HTML
     pendingList.splice(clickedItemIndex, 1); // Removes array element at index position
@@ -36,38 +52,24 @@ htmlPendingList.addEventListener( 'click', ( event ) => {
 
 htmlActiveList.addEventListener( 'change', ( event ) => {
     event.preventDefault();
-    console.log(event);
     let checkedItem = Number(event.path[1].id);
-    console.log("checkeditem", checkedItem);
     let checkedItemIndex = activeList.findIndex( item => item.id === checkedItem );
     completedList.push( activeList[checkedItemIndex] );
-
     let noLongerActive = document.querySelector( `.active-task-${checkedItem}` );
-    console.log(noLongerActive);
     noLongerActive.remove();  // Removed clicked item from pending HTML
     activeList.splice(checkedItemIndex, 1); // Removes array element at index position
-    console.log("pending", pendingList);
-    console.log("active", activeList);
-    console.log("completed", completedList);
     showCompletedToDo ( checkedItem, checkedItemIndex ); 
 });
 
 htmlCompletedList.addEventListener( 'change', ( event ) => {
     event.preventDefault();
-    console.log(event);
     let reverseCheckedItem = Number(event.path[1].id);
-    console.log("reversecheckeditem", reverseCheckedItem);
     let reverseCheckedItemIndex = completedList.findIndex( item => item.id === reverseCheckedItem );
     reverseCheckedItem.startDate = new Date( "2015-03-25t12:00:00Z" ); // Citation: https://www.w3schools.com/js/js_date_formats.asp; date formatting
     activeList.push( completedList[reverseCheckedItemIndex] );
-
     let noLongerActive = document.querySelector( `.completed-task-${reverseCheckedItem}` );
-    console.log(noLongerActive);
     noLongerActive.remove();  // Removed clicked item from pending HTML
     completedList.splice(reverseCheckedItemIndex, 1); // Removes array element at index position
-    console.log("pending", pendingList);
-    console.log("active", activeList);
-    console.log("completed", completedList);
     let newIndex = activeList.findIndex( item => item.id === reverseCheckedItem);
     clickedItem = activeList[newIndex];
     showActiveToDo ( clickedItem ); 
@@ -123,8 +125,9 @@ function showActiveToDo( clickedItem ) {
     newButton.id = clickedItem.id;
     newButton.innerHTML = "Delete";
     newButton.classList.add( "deleteButton" );
+    newButton.addEventListener( 'click', () => {deleteListItem(newButton.id)});
     
-    newLI.textContent = `${clickedItem.task}; Start: ${clickedItem.startDate}`;
+    newLI.textContent = `${clickedItem.task}; Started: ${clickedItem.startDate}`;
     newLI.classList.add( `active-task-${clickedItem.id}` );
     newLI.id = `${clickedItem.id}`;
     newLI.prepend( newCheckBox );
@@ -143,13 +146,15 @@ function showCompletedToDo( checkedItem ) {
     
     reverseCheckBox.type = "checkbox";
     reverseCheckBox.checked = true;
+    reverseCheckBox.classList.add("checkbox");
     newButton.type = "button";
     newButton.classList.add("button", "red");
     newButton.id = completedItem.id;
     newButton.innerHTML = "Delete";
     newButton.classList.add( "deleteButton" );
+    newButton.addEventListener( 'click', () => {deleteListItem(newButton.id)});
     
-    newLI.textContent = `${completedItem.task}; Completed: ${completedItem.endDate}`;
+    newLI.textContent = `${completedItem.task}; Completed:${completedItem.endDate}`;
     newLI.classList.add( `completed-task-${completedItem.id}` );
     newLI.id = `${completedItem.id}`;
     newLI.append( newButton );
@@ -157,3 +162,4 @@ function showCompletedToDo( checkedItem ) {
 
     htmlCompletedList.appendChild( newLI );
 }
+

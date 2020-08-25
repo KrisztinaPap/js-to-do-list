@@ -66,6 +66,10 @@ hr {
     background-color: green;
 }
 
+input {
+    margin: 10px;
+}
+
 #newtask {
     padding: 3px;
 }
