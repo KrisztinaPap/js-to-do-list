@@ -54,6 +54,18 @@ hr {
     margin-bottom: 10px;
 }
 
+.yellow {
+    background-color: gold;
+}
+
+.red {
+    background-color: red;
+}
+
+.green {
+    background-color: green;
+}
+
 #newtask {
     padding: 3px;
 }

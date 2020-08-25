@@ -97,6 +97,7 @@ function showPendingToDo( newToDo ) {
     
 
     newButton.type = "button";
+    newButton.classList.add("button", "yellow");
     newButton.id = newToDo.id;
     newButton.innerHTML = "Start";
     newButton.classList.add( "activateButton" );
@@ -118,6 +119,7 @@ function showActiveToDo( clickedItem ) {
     
     newCheckBox.type = "checkbox";
     newButton.type = "button";
+    newButton.classList.add("button", "red");
     newButton.id = clickedItem.id;
     newButton.innerHTML = "Delete";
     newButton.classList.add( "deleteButton" );
@@ -141,6 +143,7 @@ function showCompletedToDo( checkedItem ) {
     
     reverseCheckBox.type = "checkbox";
     newButton.type = "button";
+    newButton.classList.add("button", "green");
     newButton.id = completedItem.id;
     newButton.innerHTML = "Delete";
     newButton.classList.add( "deleteButton" );
