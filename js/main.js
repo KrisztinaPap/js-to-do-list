@@ -8,8 +8,6 @@ let userInput = document.getElementById( "new-task" ).textContent;
 let htmlPendingList = document.getElementById( "pending-list" );
 let htmlActiveList = document.getElementById( "active-list" );
 let htmlCompletedList = document.getElementById( "completed-list" );
-let listArea = document.getElementById( "list-area" );
-let deleteButtons = document.querySelectorAll( '.deleteButton' );
 
 newToDoForm.addEventListener( 'submit', ( event, userInput ) => {
     event.preventDefault();
@@ -138,7 +136,6 @@ function showPendingToDo( newToDo ) {
 }
 
 function showActiveToDo( clickedItem ) {
-    console.log("clicked ITEM:", clickedItem);
     const newLI = document.createElement( 'LI' );
     const newCheckBox = document.createElement( 'INPUT' );
     const newButton = document.createElement( 'BUTTON' );
