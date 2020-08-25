@@ -40,17 +40,17 @@ htmlActiveList.addEventListener( 'change', ( event ) => {
     let checkedItem = Number(event.path[1].id);
     console.log("checkeditem", checkedItem);
     let checkedItemIndex = activeList.findIndex( item => item.id === checkedItem );
-    console.log( checkedItemIndex);
     checkedItem.endDate = new Date( "2015-03-25t12:00:00Z" ); // Citation: https://www.w3schools.com/js/js_date_formats.asp; date formatting
-    //completedList.push( checkedItem );
+    completedList.push( activeList[checkedItemIndex] );
 
-    //let noLongerActive = document.querySelector( `.active-task-${checkedId}` );
-    //noLongerActive.remove();  // Removed clicked item from pending HTML
-    //activeList.splice(checkedItemIndex, 1); // Removes array element at index position
+    let noLongerActive = document.querySelector( `.active-task-${checkedItem}` );
+    console.log(noLongerActive);
+    noLongerActive.remove();  // Removed clicked item from pending HTML
+    activeList.splice(checkedItemIndex, 1); // Removes array element at index position
     console.log("pending", pendingList);
     console.log("active", activeList);
     console.log("completed", completedList);
-    //showCompletedToDo ( checkedItem ); 
+    showCompletedToDo ( checkedItem, checkedItemIndex ); 
 });
 
 function createNewToDo( userInput ) {
@@ -111,17 +111,21 @@ function showActiveToDo( clickedItem ) {
 }
 
 function showCompletedToDo( checkedItem ) {
+    let completedItemIndex = completedList.findIndex( item => item.id === checkedItem );
+    console.log(completedItemIndex);
+    let completedItem = completedList[completedItemIndex];
+    console.log(completedItem);
     const newLI = document.createElement( 'LI' );
     const newButton = document.createElement( 'BUTTON' );
     
     newButton.type = "button";
-    newButton.id = checkedItem.id;
+    newButton.id = completedItem.id;
     newButton.innerHTML = "Delete";
     newButton.classList.add( "deleteButton" );
     
-    newLI.textContent = `${checkedItem.task}`;
-    newLI.classList.add( `completed-task-${checkedItem.id}` );
-    newLI.id = `${checkedItem.id}`;
+    newLI.textContent = `${completedItem.task}`;
+    newLI.classList.add( `completed-task-${completedItem.id}` );
+    newLI.id = `${completedItem.id}`;
     newLI.append( newButton );
 
     htmlCompletedList.appendChild( newLI );
