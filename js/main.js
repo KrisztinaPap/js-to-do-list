@@ -29,12 +29,6 @@ function deleteListItem() {
          
 };
 
-function editListItem(event) {
-    event.preventDefault();
-    console.log(event);
-    document.querySelector( event.currentTarget ).contentEditable = true;
-}
-
 htmlPendingList.addEventListener( 'click', ( event ) => {
     event.preventDefault();
     let clickedId = event.target.id;
@@ -128,6 +122,7 @@ function showPendingToDo( newToDo ) {
     
     newP1.classList.add("task-name");
     newP1.textContent = `${newToDo.task}`;
+    newP1.contentEditable = true;
 
     newP2.classList.add("task-date", "first-pending");
     newP2.textContent = `Added: ${newToDo.addedDate}`;
@@ -156,6 +151,7 @@ function showActiveToDo( clickedItem ) {
     
     newP1.classList.add("task-name");
     newP1.textContent = `${clickedItem.task}`;
+    newP1.contentEditable = true;
 
     newP2.classList.add("task-date");
     newP2.textContent = `Started: ${clickedItem.startDate}`;
@@ -195,12 +191,12 @@ function showCompletedToDo( checkedItem ) {
     const newP1 = document.createElement( 'SPAN' );
     const newP2 = document.createElement( 'P' );
     const newButton = document.createElement( 'BUTTON' );
-    const newButton2 = document.createElement( 'BUTTON' );
     const reverseCheckBox = document.createElement( 'INPUT');
     
     newP1.classList.add("task-name");
     newP1.id = Math.floor((Math.random() * 1000000) + 1);
     newP1.textContent = `${completedItem.task}`;
+    newP1.contentEditable = true;
 
     newP2.classList.add("task-date");
     newP2.textContent = `Completed: ${completedItem.endDate}`;
@@ -212,12 +208,6 @@ function showCompletedToDo( checkedItem ) {
     newButton.classList.add( "deleteButton" );
     newButton.addEventListener( 'click', () => {deleteListItem(newButton.id)});
 
-    newButton2.type = "button";
-    newButton2.classList.add("button", "green");
-    newButton2.innerHTML = "Edit Task";
-    newButton2.classList.add( "editButton" );
-    newButton2.addEventListener( 'click', () => {editListItem(event)});
-
     reverseCheckBox.type = "checkbox";
     reverseCheckBox.checked = true;
     reverseCheckBox.classList.add("checkbox");
@@ -227,7 +217,6 @@ function showCompletedToDo( checkedItem ) {
     newLI.appendChild( newP1 );
     newLI.appendChild( newP2 );
     newLI.append( newButton );
-    newLI.append( newButton2 );
     newLI.prepend( reverseCheckBox );
 
     htmlCompletedList.appendChild( newLI );
