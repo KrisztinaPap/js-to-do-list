@@ -116,21 +116,26 @@ function addPendingToDo( newToDo ) {
 function showPendingToDo( newToDo ) {
     // show todo in HTML
     const newLI = document.createElement( 'LI' );
-
+    const newP1 = document.createElement( 'SPAN' );
+    const newP2 = document.createElement( 'P' );
     const newButton = document.createElement( 'BUTTON' );
     
+    newP1.classList.add("task-name");
+    newP1.textContent = `${newToDo.task}`;
+
+    newP2.classList.add("task-date", "first-pending");
+    newP2.textContent = `Added: ${newToDo.addedDate}`;
 
     newButton.type = "button";
-    newButton.classList.add("button", "yellow");
+    newButton.classList.add("button", "yellow", "first-pending");
     newButton.id = newToDo.id;
     newButton.innerHTML = "Start";
     newButton.classList.add( "activateButton" );
     
-    newLI.textContent = `${newToDo.task},
-                         Added: ${newToDo.addedDate}`;
     newLI.classList.add( `pending-task-${newToDo.id}` );
     newLI.id = `${newToDo.id}`;
-
+    newLI.appendChild( newP1 );
+    newLI.appendChild( newP2 );
     newLI.append( newButton );
 
     htmlPendingList.appendChild( newLI );
@@ -138,9 +143,17 @@ function showPendingToDo( newToDo ) {
 
 function showActiveToDo( clickedItem ) {
     const newLI = document.createElement( 'LI' );
+    const newP1 = document.createElement( 'SPAN' );
+    const newP2 = document.createElement( 'P' );
     const newCheckBox = document.createElement( 'INPUT' );
     const newButton = document.createElement( 'BUTTON' );
     
+    newP1.classList.add("task-name");
+    newP1.textContent = `${clickedItem.task}`;
+
+    newP2.classList.add("task-date");
+    newP2.textContent = `Started: ${clickedItem.startDate}`;
+
     newCheckBox.type = "checkbox";
     newButton.type = "button";
     newButton.classList.add("button", "red");
@@ -149,9 +162,10 @@ function showActiveToDo( clickedItem ) {
     newButton.classList.add( "deleteButton" );
     newButton.addEventListener( 'click', () => {deleteListItem(newButton.id)});
     
-    newLI.textContent = `${clickedItem.task}, Started: ${clickedItem.startDate}`;
     newLI.classList.add( `active-task-${clickedItem.id}` );
     newLI.id = `${clickedItem.id}`;
+    newLI.appendChild( newP1 );
+    newLI.appendChild( newP2 );
     newLI.prepend( newCheckBox );
     newLI.append( newButton );
 
@@ -172,22 +186,32 @@ function showCompletedToDo( checkedItem ) {
 
     completedItem.endDate = dateTime; // Citation: https://www.w3schools.com/js/js_date_formats.asp; date formatting
     const newLI = document.createElement( 'LI' );
+    const newP1 = document.createElement( 'SPAN' );
+    const newP2 = document.createElement( 'P' );
     const newButton = document.createElement( 'BUTTON' );
     const reverseCheckBox = document.createElement( 'INPUT');
     
-    reverseCheckBox.type = "checkbox";
-    reverseCheckBox.checked = true;
-    reverseCheckBox.classList.add("checkbox");
+    newP1.classList.add("task-name");
+    newP1.textContent = `${completedItem.task}`;
+
+    newP2.classList.add("task-date");
+    newP2.textContent = `Completed: ${completedItem.endDate}`;
+
     newButton.type = "button";
     newButton.classList.add("button", "red");
     newButton.id = completedItem.id;
     newButton.innerHTML = "Delete";
     newButton.classList.add( "deleteButton" );
     newButton.addEventListener( 'click', () => {deleteListItem(newButton.id)});
+
+    reverseCheckBox.type = "checkbox";
+    reverseCheckBox.checked = true;
+    reverseCheckBox.classList.add("checkbox");
     
-    newLI.textContent = `${completedItem.task}, Completed:${completedItem.endDate}`;
     newLI.classList.add( `completed-task-${completedItem.id}` );
     newLI.id = `${completedItem.id}`;
+    newLI.appendChild( newP1 );
+    newLI.appendChild( newP2 );
     newLI.append( newButton );
     newLI.prepend( reverseCheckBox );
 

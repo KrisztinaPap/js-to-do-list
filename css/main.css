@@ -94,6 +94,32 @@ ul {
     list-style-type: none;
 }
 
+li {
+    margin: 0.5rem;
+    text-align: left;
+    background-color: whitesmoke;
+}
+
+.task-name {
+    font-weight: bold;
+    display: inline-block;
+}
+
+.task-date {
+    text-align: left;
+    margin-left: 32px;
+    font-size: 0.8rem;
+}
+
+.deleteButton {
+    margin-left: 32px;
+}
+
+.first-pending.task-date,
+.activateButton.first-pending {
+    margin-left: 0;
+}
+
 @media screen and ( min-width: 1400px ) {
     .flex-container {
         display: flex;
