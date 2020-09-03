@@ -58,7 +58,8 @@ htmlPendingList.addEventListener( 'click', ( event ) => {
 
 htmlActiveList.addEventListener( 'change', ( event ) => {
     event.preventDefault();
-    let checkedItem = Number(event.composedPath[1].id);
+    console.log(event.Path);
+    let checkedItem = Number(event.Path[1].id);
     let checkedItemIndex = activeList.findIndex( item => item.id === checkedItem );
     completedList.push( activeList[checkedItemIndex] );
     let noLongerActive = document.querySelector( `.active-task-${checkedItem}` );
