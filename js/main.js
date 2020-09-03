@@ -58,7 +58,7 @@ htmlPendingList.addEventListener( 'click', ( event ) => {
 
 htmlActiveList.addEventListener( 'change', ( event ) => {
     event.preventDefault();
-    let checkedItem = Number(event.path[1].id);
+    let checkedItem = Number(event.composedPath[1].id);
     let checkedItemIndex = activeList.findIndex( item => item.id === checkedItem );
     completedList.push( activeList[checkedItemIndex] );
     let noLongerActive = document.querySelector( `.active-task-${checkedItem}` );
@@ -69,7 +69,7 @@ htmlActiveList.addEventListener( 'change', ( event ) => {
 
 htmlCompletedList.addEventListener( 'change', ( event ) => {
     event.preventDefault();
-    let reverseCheckedItem = Number(event.path[1].id);
+    let reverseCheckedItem = Number(event.composedPath[1].id);
     let reverseCheckedItemIndex = completedList.findIndex( item => item.id === reverseCheckedItem );
 
     // Citation
