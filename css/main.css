@@ -39,7 +39,7 @@ h2 {
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-image: url("/img/mountain.jpg");
+    background-image: url("./img/mountain.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
